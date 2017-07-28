@@ -306,11 +306,16 @@ objects:
         kubernetes_sd_configs:
         - role: pod
         
-        namespaces:
-          names:
-          - logging
+        #namespaces:
+        #  names:
+        #  - logging
 
         relabel_configs:
-        - source_labels: [__meta_kubernetes_pod_container_port_number, __meta_kubernetes_pod_label_service, __meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        - source_labels: [__meta_kubernetes_pod_label_component, __meta_kubernetes_pod_container_port_number]
           action: keep
-          regex: true;es;9200
+          regex: es(-ops)*;9200
+
+        #relabel_configs:
+        #- source_labels: [__meta_kubernetes_pod_container_port_number, __meta_kubernetes_pod_label_component, __meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        #  action: keep
+        #  regex: 9200;es(-ops)*;true
