@@ -1,3 +1,4 @@
+Modification of [original prometheus.yml file](https://raw.githubusercontent.com/openshift/origin/master/examples/prometheus/prometheus.yaml).
 
 You have to define where the Prometheus server will be available via `PROMETHEUS_URL` env. Example:
 
