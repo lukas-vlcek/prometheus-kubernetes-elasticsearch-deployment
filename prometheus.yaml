@@ -303,11 +303,13 @@ objects:
         
         # See: https://prometheus.io/docs/operating/configuration/#tls_config
         tls_config:
-          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-          #cert_file: ...
-          #key_file: ...
-          #insecure_skip_verify: true
-        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+          ca_file: /etc/elasticsearch/secret/admin-ca 
+          cert_file: /etc/elasticsearch/secret/admin-cert
+          key_file: /etc/elasticsearch/secret/admin-key
+          insecure_skip_verify: true
+          #server_name:
+
+        #bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
 
         kubernetes_sd_configs:
         - role: pod
