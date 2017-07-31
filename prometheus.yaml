@@ -141,9 +141,15 @@ objects:
             name: prometheus-config
           - mountPath: /prometheus
             name: prometheus-data
+          - mountPath: /etc/elasticsearch/secret
+            name: elasticsearch
+            readOnly: true
 
         restartPolicy: Always
         volumes:
+        - name: elasticsearch
+          secret:
+            secretName: logging-elasticsearch
         - name: prometheus-config
           configMap:
             defaultMode: 420
